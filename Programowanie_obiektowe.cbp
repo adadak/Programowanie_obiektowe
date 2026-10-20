@@ -7,10 +7,16 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="stack">
-				<Option output="/stack/stack" prefix_auto="1" extension_auto="1" />
-				<Option object_output="/stack/" />
+				<Option output="stack/stack" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../Programowanie_obiektowe" />
+				<Option object_output="../Programowanie_obiektowe/stack/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-pedantic" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
 			</Target>
 		</Build>
 		<Compiler>
