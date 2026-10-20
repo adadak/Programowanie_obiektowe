@@ -56,6 +56,6 @@ int pop(tstack *s) {
 };
 
 void close(tstack *s) {
-    delete[] s->data;
-    delete s;
+    delete[] s->data; //tablica
+    delete s; //struktura
 }

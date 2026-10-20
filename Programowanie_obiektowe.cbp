@@ -6,18 +6,6 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="arena">
-				<Option output="/arena/" prefix_auto="1" extension_auto="1" />
-				<Option object_output="/arena/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
 			<Target title="stack">
 				<Option output="/stack/stack" prefix_auto="1" extension_auto="1" />
 				<Option object_output="/stack/" />
@@ -29,29 +17,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="arena.cpp">
-			<Option target="arena" />
-		</Unit>
-		<Unit filename="arena.h">
-			<Option target="arena" />
-		</Unit>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-			<Option target="stack" />
-		</Unit>
-		<Unit filename="main.cpp">
-			<Option target="arena" />
-		</Unit>
-		<Unit filename="stack.c">
-			<Option compilerVar="CC" />
-			<Option target="stack" />
-		</Unit>
-		<Unit filename="stack.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="stack.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="main.cpp" />
+		<Unit filename="stack.cpp" />
+		<Unit filename="stack.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
