@@ -35,13 +35,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="stacja/base.hpp">
+		<Unit filename="stacja/base.h">
 			<Option target="stacja" />
 		</Unit>
 		<Unit filename="stacja/base_and_2_sensors.cpp">
 			<Option target="stacja" />
 		</Unit>
-		<Unit filename="stacja/sensor.hpp">
+		<Unit filename="stacja/sensor.h">
 			<Option target="stacja" />
 		</Unit>
 		<Unit filename="stack/main.cpp">

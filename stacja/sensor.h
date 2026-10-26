@@ -4,10 +4,11 @@
 
 class CTemperatureSensor {
 public:
-    float Temperature();
+    float Temperature = 0.0f;
+
 };
 
 class CHumiditySensor {
 public:
-    float Humidity();
+    float Humidity = 0.0f;
 };
