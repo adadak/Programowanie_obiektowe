@@ -59,3 +59,4 @@ void close(tstack *s) {
     delete[] s->data; //tablica
     delete s; //struktura
 }
+

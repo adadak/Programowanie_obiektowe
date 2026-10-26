@@ -18,14 +18,41 @@
 					<Add option="-g" />
 				</Compiler>
 			</Target>
+			<Target title="stacja">
+				<Option output="stacja/stacja" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../Programowanie_obiektowe" />
+				<Option object_output="../Programowanie_obiektowe/stacja/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-pedantic" />
+					<Add option="-std=c++11" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
-		<Unit filename="stack.cpp" />
-		<Unit filename="stack.h" />
+		<Unit filename="stacja/base.hpp">
+			<Option target="stacja" />
+		</Unit>
+		<Unit filename="stacja/base_and_2_sensors.cpp">
+			<Option target="stacja" />
+		</Unit>
+		<Unit filename="stacja/sensor.hpp">
+			<Option target="stacja" />
+		</Unit>
+		<Unit filename="stack/main.cpp">
+			<Option target="stack" />
+		</Unit>
+		<Unit filename="stack/stack.cpp">
+			<Option target="stack" />
+		</Unit>
+		<Unit filename="stack/stack.h">
+			<Option target="stack" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
