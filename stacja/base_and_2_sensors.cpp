@@ -15,10 +15,14 @@ int main()
 	Base.setTemperatureSensor(&TemperatureSensor);	//Przekazanie stacji bazowej adresu czujnika temperatury
 	Base.setHumiditySensor(&HumiditySensor);			//Przekazanie stacji bazowej adresu czujnika wilgotności
 
+	CBase Base2;
+    Base2.setHumiditySensor(&HumiditySensor);
+
 	while(true)							//Pętla nieskończona (przerwanie programu wymaga użycia klwiszy Ctrl+C)
 	{
 		Base.readSensors();							//Odczyt danych z czujników
 		Base.displayMeasurements();				//Wyświetlenie danych w konsoli
+		Base2.displayMeasurements();
 		sleep(3);										//3-sekundowa pauza
 	};
 

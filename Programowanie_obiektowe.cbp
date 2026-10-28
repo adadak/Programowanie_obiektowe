@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="stack">
-				<Option output="stack/stack" prefix_auto="1" extension_auto="1" />
+				<Option output="stack" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../Programowanie_obiektowe" />
 				<Option object_output="../Programowanie_obiektowe/stack/" />
 				<Option type="1" />
@@ -19,7 +19,7 @@
 				</Compiler>
 			</Target>
 			<Target title="stacja">
-				<Option output="stacja/stacja" prefix_auto="1" extension_auto="1" />
+				<Option output="stacja/stacja/stacja" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../Programowanie_obiektowe" />
 				<Option object_output="../Programowanie_obiektowe/stacja/" />
 				<Option type="1" />
@@ -39,6 +39,9 @@
 			<Option target="stacja" />
 		</Unit>
 		<Unit filename="stacja/base_and_2_sensors.cpp">
+			<Option target="stacja" />
+		</Unit>
+		<Unit filename="stacja/rand.h">
 			<Option target="stacja" />
 		</Unit>
 		<Unit filename="stacja/sensor.h">
