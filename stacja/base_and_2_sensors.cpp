@@ -6,25 +6,19 @@ using namespace std;	//... polecenie użycia nazw z przestrzeni std - niezbędne
 #include "sensor.h"	//Plik nagłówkowy, w kórym należy zadeklarować klasy reprezentujące czujniki
 #include "base.h"		//Plik nagłówkowy, w kórym należy zadeklarować klasę reprezentującą stację bazową
 
-int main()
-{
-	CTemperatureSensor TemperatureSensor;	//Utworzenie obiektu reprezentującego czujnik temperatury
-	CHumiditySensor HumiditySensor;			//Utworzenie obiektu reprezentującego czujnik wilgotności
-	CBase Base;										//Utworzenie obiektu reprezentującego stację bazową
+int main() {
+    CTemperatureSensor TemperatureSensor(-5.0f, 42.0f);	//Utworzenie obiektu reprezentującego czujnik temperatury
+    CHumiditySensor HumiditySensor(-5.0f, 42.0f);			//Utworzenie obiektu reprezentującego czujnik wilgotności
+    CBase Base;										//Utworzenie obiektu reprezentującego stację bazową
 
-	Base.setTemperatureSensor(&TemperatureSensor);	//Przekazanie stacji bazowej adresu czujnika temperatury
-	Base.setHumiditySensor(&HumiditySensor);			//Przekazanie stacji bazowej adresu czujnika wilgotności
+    Base.setTemperatureSensor(&TemperatureSensor);	//Przekazanie stacji bazowej adresu czujnika temperatury
+    Base.setHumiditySensor(&HumiditySensor);			//Przekazanie stacji bazowej adresu czujnika wilgotności
 
-	CBase Base2;
-    Base2.setHumiditySensor(&HumiditySensor);
+    while(true) {						//Pętla nieskończona (przerwanie programu wymaga użycia klwiszy Ctrl+C)
+        SMeasurement result = Base.readSensors(); //skopiuj do struktury "result"
+        Base.displayMeasurements(result);
+        sleep(3);										//3-sekundowa pauza
+    };
 
-	while(true)							//Pętla nieskończona (przerwanie programu wymaga użycia klwiszy Ctrl+C)
-	{
-		Base.readSensors();							//Odczyt danych z czujników
-		Base.displayMeasurements();				//Wyświetlenie danych w konsoli
-		Base2.displayMeasurements();
-		sleep(3);										//3-sekundowa pauza
-	};
-
-	return 0;
+    return 0;
 }

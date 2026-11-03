@@ -2,10 +2,16 @@
 #include <stdexcept>
 #include "sensor.h"
 
+struct SMeasurement {
+    float Temperature;
+    float Humidity;
+};
+
+
 class CBase {
 public:
-    void readSensors() {
-        //walidacja dla wszystkich odcyzt�w:
+    SMeasurement readSensors() {
+        //walidacja dla wszystkich odcyztów:
         if(
             (t_ptr == nullptr) ||
             (h_ptr == nullptr)
@@ -17,16 +23,26 @@ public:
                 throw std::logic_error("Humidity is nullptr");
             }
         }
-        lastTemperature = t_ptr->Temperature;
-        lastHumidity = h_ptr->Humidity;
 
+        //zapisz pomaiar w lastX wbijając się do klasy przez wskaźnik
+        lastTemperature = t_ptr->getTemperature(t_ptr);
+        lastHumidity = h_ptr->getHumidity(h_ptr);
+
+
+        return SMeasurement{lastTemperature, lastHumidity}; //zwróć jako struct
     }
     void displayMeasurements() {
-        std::cout << lastHumidity << '\n';
-        std::cout << lastTemperature << '\n';
+        std::cout << "Last humidity: " << lastHumidity << '\n';
+        std::cout << "Last temperature: " << lastTemperature << '\n';
     }
+
+    void displayMeasurements(const SMeasurement& m) {
+        std::cout << "Last humidity: " << m.Humidity << '\n';
+        std::cout << "Last temperature: " << m.Temperature << '\n';
+    }
+    //settery
     void setTemperatureSensor(CTemperatureSensor * t) {
-        this -> t_ptr = t;
+        this -> t_ptr = t; //kopiowanie adresu t do pola t_ptr dla bieżącego obiektu
     }
     void setHumiditySensor(CHumiditySensor * h) {
         this -> h_ptr = h;

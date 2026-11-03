@@ -2,23 +2,49 @@
 #include "rand.h"
 
 
-class CTemperatureSensor {
+class CSensor {
 private:
-    float Temperature = 0.0f; //default
 
-    void makeMeasurment(){
-    Temperature = getRandomNumber(0.0f, 9.9f);
+    float lowLimit;
+    float highLimit;
+protected:
+    float Measurement = 0.0f; //default
+    void makeMeasurement() {
+        Measurement = getRandomNumber(lowLimit, highLimit);
     }
 public:
-
-    float getTemperature(CTemperatureSensor* t){ //przyjmuje wskaźnik do instancji sensora i zwraca pomiar
-    makeMeasurment();
-     = t_ptr->Temperature;
+    //konstruktor obiektu sensora
+    CSensor(float low, float high) {
+        lowLimit = low;
+        highLimit = high;
     }
+
 
 };
 
-class CHumiditySensor {
+class CTemperatureSensor : public CSensor {
 public:
-    float Humidity = 0.0f;
+    CTemperatureSensor(float low, float high)
+        : CSensor(low, high) {
+    }
+
+//getter dla temp
+    float getTemperature(CTemperatureSensor* t) { //przyjmuje wskaźnik do instancji sensora i zwraca pomiar
+        t -> makeMeasurement();
+        return t->Measurement;
+    }
+};
+class CHumiditySensor : public CSensor {
+
+public:
+    CHumiditySensor(float low, float high)
+        : CSensor(low, high) {
+    }
+
+//getter dla hum
+    float getHumidity(CHumiditySensor* h) {
+        h -> makeMeasurement();
+        return h->Measurement;
+    };
+
 };
