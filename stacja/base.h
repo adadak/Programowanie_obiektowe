@@ -1,5 +1,7 @@
 #pragma once
+#include <iostream>
 #include <stdexcept>
+#include <vector>
 #include "sensor.h"
 
 struct SMeasurement {
@@ -32,13 +34,22 @@ public:
         return SMeasurement{lastTemperature, lastHumidity}; //zwróć jako struct
     }
     void displayMeasurements() {
-        std::cout << "Last humidity: " << lastHumidity << '\n';
-        std::cout << "Last temperature: " << lastTemperature << '\n';
+        for (CSensor* pSensor : Sensors) {
+            std::cout << "Current " << pSensor->getName() << ": "
+                      << pSensor->getMeasurement() << ' ' << pSensor->getUnit() << '\n';
+        }
+        std::cout << '\n';
     }
 
     void displayMeasurements(const SMeasurement& m) {
         std::cout << "Last humidity: " << m.Humidity << '\n';
         std::cout << "Last temperature: " << m.Temperature << '\n';
+    }
+    void setSensor(CSensor* pSensor) {
+        if (pSensor == nullptr) {
+            throw std::invalid_argument("Sensor is nullptr");
+        }
+        Sensors.push_back(pSensor);
     }
     //settery
     void setTemperatureSensor(CTemperatureSensor * t) {
@@ -48,6 +59,7 @@ public:
         this -> h_ptr = h;
     }
 private:
+    std::vector<CSensor*> Sensors;
     CTemperatureSensor* t_ptr = nullptr;
     CHumiditySensor* h_ptr = nullptr;
     float lastHumidity = 0.0f;
